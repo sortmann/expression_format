@@ -9,4 +9,4 @@ license = "MIT OR Apache-2.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-expression_format_impl = { path = "../expression_format_impl" }
+expression_format_impl = "1"
