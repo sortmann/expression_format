@@ -1,0 +1,12 @@
+[package]
+name = "expression_format"
+version = "1.0.0"
+authors = ["Sebastian Ortmann <ortmann.sebastian@gmail.com>"]
+edition = "2018"
+description = "A crate to format expressions in strings"
+license = "MIT OR Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+expression_format_impl = { path = "../expression_format_impl" }
