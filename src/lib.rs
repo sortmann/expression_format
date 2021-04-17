@@ -95,7 +95,7 @@ pub mod short {
     /// Short name version of [`ex_println!`](../macro.ex_println.html)
     pub use expression_format_impl::ex_println as expl;
     /// Short name version of [`ex_eprintln!`](../macro.ex_eprintln.html)
-    pub use expression_format_impl::ex_println as exepl;
+    pub use expression_format_impl::ex_eprintln as exepl;
 }
 
 #[cfg(test)]
