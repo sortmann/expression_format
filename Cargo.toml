@@ -5,6 +5,8 @@ authors = ["Sebastian Ortmann <ortmann.sebastian@gmail.com>"]
 edition = "2018"
 description = "A crate to format expressions in strings"
 license = "MIT OR Apache-2.0"
+readme = "readme.md"
+repository = "https://github.com/sortmann/expression_format"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
