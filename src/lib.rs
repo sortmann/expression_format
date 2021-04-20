@@ -1,4 +1,5 @@
-//! A crate to format and print strings with an embedded rust expression.
+//! A crate to format and print strings with an embedded rust expression, 
+//! similar to [f-string formatting in Python](https://docs.python.org/3/tutorial/inputoutput.html).
 //! # Examples
 //!
 //! Using `:?` modifier.
@@ -10,6 +11,18 @@
 //!
 //! ---
 //!
+//! Using other modifiers ([`std:fmt`](https://doc.rust-lang.org/std/fmt/index.html) for details).
+//! ```
+//! use expression_format::ex_format;
+//! // Space after format specs if it doesn't ends in ?
+//! assert_eq!(ex_format!(r#"Hello {:-<5 "x"}!"#), "Hello x----!");
+//! assert_eq!(ex_format!("{:.5 12.3}"), "12.30000");
+//! assert_eq!(ex_format!("{:#010x 27}!"), "0x0000001b!");
+//! ```
+//! No support for `*` and `$` parameters.
+//! 
+//! ---
+//! 
 //! Printing the contents of fields.
 //! ```
 //! use expression_format::ex_format;
@@ -192,5 +205,73 @@ mod tests {
             ),
             "lorem ipsum"
         );
+    }
+
+    #[test]
+    fn test_number_format_width() {
+        assert_eq!(
+            exf!("{:04 42}"),
+            "0042"
+        );
+    }
+
+    #[test]
+    fn test_text_format_width() {
+        assert_eq!(
+            exf!(r#"Hello {:5 "x"}!"#),
+            "Hello x    !"
+        );
+    }
+
+    #[test]
+    fn test_text_format_width_left_aligned() {
+        assert_eq!(
+            exf!(r#"Hello {:<5 "x"}!"#),
+            "Hello x    !"
+        );
+    }
+
+    #[test]
+    fn test_text_format_width_left_aligned_with_dash() {
+        assert_eq!(
+            exf!(r#"Hello {:-<5 "x"}!"#),
+            "Hello x----!"
+        );
+    }
+
+    #[test]
+    fn test_text_format_width_center_aligned() {
+        assert_eq!(
+            exf!(r#"Hello {:^5 "x"}!"#),
+            "Hello   x  !"
+        );
+    }
+
+    #[test]
+    fn test_text_format_width_right_aligned() {
+        assert_eq!(
+            exf!(r#"Hello {:>5 "x"}!"#),
+            "Hello     x!"
+        );
+    }
+
+    #[test]
+    fn test_sign() {
+        assert_eq!(exf!("Hello {:+ 5}!"), "Hello +5!");
+    }
+
+    #[test]
+    fn test_sharp_x() {
+        assert_eq!(exf!("{:#x 27}!"), "0x1b!");
+    }
+
+    #[test]
+    fn test_sharp_x_with_width() {
+        assert_eq!(exf!("{:#010x 27}!"), "0x0000001b!");
+    }
+
+    #[test]
+    fn test_precission() {
+        assert_eq!(exf!("{:.5 12.3}"), "12.30000");
     }
 }
