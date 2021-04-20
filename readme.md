@@ -3,7 +3,7 @@ similar to [f-string formatting in Python](https://docs.python.org/3/tutorial/in
 # Examples
 
 Using `:?` modifier.
-```
+```rust
 use expression_format::ex_format;
 let v = vec![1, 2, 3];
 assert_eq!(ex_format!("v = {:?v}"), "v = [1, 2, 3]");
@@ -12,7 +12,7 @@ assert_eq!(ex_format!("v = {:?v}"), "v = [1, 2, 3]");
 ---
 
 Using other modifiers ([`std:fmt`](https://doc.rust-lang.org/std/fmt/index.html) for details).
-```
+```rust
 use expression_format::ex_format;
 // Space after format specs if it doesn't ends in ?
 assert_eq!(ex_format!(r#"Hello {:-<5 "x"}!"#), "Hello x----!");
@@ -24,7 +24,7 @@ No support for `*` and `$` parameters.
 ---
 
 Printing the contents of fields.
-```
+```rust
 use expression_format::ex_format;
 let arg = ["ipsum", "sit"];
 assert_eq!(ex_format!("lorem {arg[0]} dolor {arg[1]} amet"), "lorem ipsum dolor sit amet");
@@ -33,7 +33,7 @@ assert_eq!(ex_format!("lorem {arg[0]} dolor {arg[1]} amet"), "lorem ipsum dolor 
 ---
 
 Short version of [`ex_format!`](macro.ex_format.html) with a complex expression.
-```
+```rust
 use expression_format::short::exf;
 
 assert_eq!(
@@ -51,7 +51,7 @@ assert_eq!(
 ---
 
 Print to standard output with a new line.
-```
+```rust
 use expression_format::short::expl; // Short name version of ex_println!
 #[derive(Debug)]
 struct Point {x: i32, y: i32}
@@ -63,7 +63,7 @@ expl!("value of point = {:?Point {x: 1 + 2, y: 3 * 4 }}");
 ---
 
 Escape brackets with `{{` and `}}`.
-```
+```rust
 use expression_format::short::exf;
 let value = 10;
 assert_eq!(exf!("{{value}} = {value}"), "{value} = 10");
