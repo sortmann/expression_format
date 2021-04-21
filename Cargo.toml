@@ -1,6 +1,6 @@
 [package]
 name = "expression_format"
-version = "1.1.1"
+version = "1.1.2"
 authors = ["Sebastian Ortmann <ortmann.sebastian@gmail.com>"]
 edition = "2018"
 description = "A crate to format Rust expressions in a string, similar to f-string formatting in Python"

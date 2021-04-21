@@ -274,4 +274,19 @@ mod tests {
     fn test_precission() {
         assert_eq!(exf!("{:.5 12.3}"), "12.30000");
     }
+
+    #[test]
+    fn test_format_alignment_with_char() {
+        assert_eq!(exf!(r#"{:'>10 "test"}"#), "''''''test");
+    }
+
+    #[test]
+    fn test_format_alignment_with_quotes() {
+        assert_eq!(exf!(r#"{:"<10 "test"}"#), r#"test"""""""#);
+    }
+
+    #[test]
+    fn test_format_alignment_with_space() {
+        assert_eq!(exf!(r#"{: <10 "test"}"#), r#"test      "#);
+    }
 }
