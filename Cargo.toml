@@ -12,4 +12,4 @@ categories = ["command-line-utilities"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-expression_format_impl = "1"
+expression_format_impl = "1.1.1"
